@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at Camcall | Shape the Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ====== FONT UPDATE ====== */
+        body {
+            font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .hero, .hero * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .section-title, .vision-title, .solutions-title, .careers-text h2, .content-box h3 {
+            font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 800;
+        }
+        
+        /* ====== COLOR VARIABLES ====== */
+        :root {
+            --primary: #0087e0;
+            --primary-dark: #0066a6;
+            --primary-light: #4da6ff;
+            --secondary: #0087e0;
+            --light: #ffffff;
+            --dark: #0a0a0a;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16);
+            --bg-color: #ffffff;
+            --text-color: #0a0a0a;
+            --card-bg: #f8f9fa;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #e0e0e0;
+            --nav-height: 60px;
+        }
+
+        .dark-theme {
+            --primary: #4da6ff;
+            --primary-dark: #1a75bc;
+            --secondary: #0087e0;
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --border-color: #333333;
+        }
+
+        /* ====== BASE STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.7;
+            transition: background-color 0.8s ease, color 0.8s ease;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Animation Styles */
+        .animate-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+            will-change: transform, opacity;
+        }
+
+        .animate-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            padding: 0.5rem 5%; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--nav-height);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .logo-container {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .logo {
+            height: 100%;
+            max-width: 150px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            background: var(--secondary);
+            left: 0;
+            bottom: 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .hamburger::before, .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger::after {
+            transform: translateY(8px);
+        }
+
+        .menu-toggle.active .hamburger {
+            background: transparent;
+        }
+
+        .menu-toggle.active .hamburger::before {
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .hamburger::after {
+            transform: rotate(-45deg);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            margin-left: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.2);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1.2rem 0;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: block;
+            position: relative;
+        }
+
+        .mobile-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .mobile-menu a:hover::after {
+            width: 80px;
+        }
+
+        .mobile-menu .theme-toggle {
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+
+        /* Hero Section - Careers Version */
+        .careers-hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-top: var(--nav-height);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            padding: 2rem 1.5rem;
+        }
+
+        .careers-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .careers-hero-title {
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            background: linear-gradient(45deg, #ffffff, var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1.5px;
+        }
+
+        .careers-hero-subtitle {
+            font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 0 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.6rem;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transform: translateZ(0);
+            perspective: 1000px;
+            min-height: 50px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--secondary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) translateZ(10px);
+            box-shadow: 0 15px 30px rgba(0, 135, 224, 0.4);
+        }
+
+        .cta-button:hover::before {
+            width: 100%;
+        }
+
+        .cta-button i {
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 4rem 1.5rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            position: relative;
+            color: var(--primary);
+            letter-spacing: -1px;
+            padding: 0 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--secondary);
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Why Work at Camcall Section */
+        .benefits-section {
+            background: var(--bg-color);
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .benefits-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .benefits-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotateY(180deg);
+            background: var(--secondary);
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .benefit-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Life at Camcall Section */
+        .life-section {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        .life-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            left: -1rem;
+            top: -1rem;
+            opacity: 0.2;
+            color: var(--secondary);
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Current Openings Section */
+        .openings-section {
+            background: var(--bg-color);
+        }
+
+        .openings-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .job-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .job-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .job-tag {
+            background: var(--primary-light);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .job-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .job-details {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .job-responsibilities, .job-requirements {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .job-subtitle i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .job-list {
+            list-style-type: none;
+        }
+
+        .job-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .job-list li::before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .apply-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .apply-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 135, 224, 0.3);
+        }
+
+        .apply-button i {
+            margin-left: 0.5rem;
+        }
+
+        /* How We Hire Section */
+        .process-section {
+            background: var(--card-bg);
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+        @media (min-width: 768px) {
+            .process-steps {
+                margin: 3rem 2rem;
+            }
+            
+            .process-steps::before {
+                left: 50%;
+            }
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .process-step:nth-child(odd) {
+                flex-direction: row-reverse;
+                text-align: right;
+            }
+            
+            .process-step:nth-child(odd) .step-content {
+                margin-right: auto;
+                margin-left: 2rem;
+            }
+            
+            .process-step:nth-child(even) .step-content {
+                margin-left: auto;
+                margin-right: 2rem;
+            }
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+            background: var(--secondary);
+        }
+
+        .step-content {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            margin-left: 2rem;
+            flex: 1;
+            transition: var(--transition);
+        }
+
+        @media (min-width: 768px) {
+            .step-content {
+                max-width: 45%;
+            margin-left: 2rem;
+                margin-right: 2rem;
+            }
+        }
+
+        .process-step:hover .step-content {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .step-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Apply Now Section */
+        .apply-section {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        .apply-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .apply-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 135, 224, 0.3);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload-btn {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--secondary);
+        }
+
+        .file-upload-input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Employee Benefits Section */
+        .perks-section {
+            background: var(--bg-color);
+        }
+
+        .perks-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .perks-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .perks-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .perk-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .perk-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary);
+        }
+
+        .perk-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .perk-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .perk-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer CTA Section */
+        .footer-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .footer-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0) rotateX(0) rotateY(0); }
+            50% { transform: translateY(-15px) rotateX(5deg) rotateY(5deg); }
+            100% { transform: translateY(0) rotateX(0) rotateY(0); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Resume Upload Styles */
+        .resume-upload-container {
+            margin-bottom: 2rem;
+        }
+
+        .upload-instructions {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .upload-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .upload-options {
+                flex-direction: row;
+            }
+        }
+
+        .upload-option {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .upload-option:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .upload-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .upload-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 135, 224, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 767px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .careers-hero-title {
+                font-size: 2rem;
+            }
+            
+            .careers-hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .job-tags {
+                margin-top: 1rem;
+                width: 100%;
+            }
+            
+            .process-steps::before {
+                left: 30px;
+            }
+            
+            .step-content {
+                margin-left: 1.5rem;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .careers-hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .benefits-container,
+            .perks-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .apply-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar" id="navbar">
+        <a href="index.html" class="logo-container animate-item delay-1">
+            <img src="cam.png" alt="Camcall Retail" class="logo">
+        </a>
+        
+        <nav class="nav-links">
+            <a href="index.html" class="animate-item delay-1"><i class="fas fa-home"></i> </a>
+            <a href="index.html#vision" class="animate-item delay-1"><i class="fas fa-eye"></i> </a>
+            <a href="index.html#approach" class="animate-item delay-1"><i class="fas fa-lightbulb"></i> </a>
+            <a href="index.html#solutions" class="animate-item delay-1"><i class="fas fa-mobile-alt"></i> </a>
+            <a href="#careers" class="animate-item delay-1"><i class="fas fa-briefcase"></i> </a>
+            <a href="index.html#contact" class="animate-item delay-1"><i class="fas fa-envelope"></i> </a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <div class="hamburger"></div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="index.html#vision"><i class="fas fa-eye"></i> Vision</a>
+            <a href="index.html#approach"><i class="fas fa-lightbulb"></i> Approach</a>
+            <a href="index.html#solutions"><i class="fas fa-mobile-alt"></i> Solutions</a>
+            <a href="#careers"><i class="fas fa-briefcase"></i> Careers</a>
+            <a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <button class="theme-toggle" id="mobileThemeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="careers-hero" id="careers">
+        <div class="careers-hero-content">
+            <h1 class="careers-hero-title animate-item delay-1 floating">Shape the Future with Camcall</h1>
+            <p class="careers-hero-subtitle animate-item delay-2">Join our team and be part of innovations in retail & technology.</p>
+            <a href="#openings" class="cta-button animate-item delay-3">View Openings <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+    
+    <!-- Why Work at Camcall Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title animate-item">Why Work at Camcall?</h2>
+            <div class="benefits-container">
+                <div class="benefit-card animate-item delay-1">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="benefit-title">Innovation First</h3>
+                    <p class="benefit-description">Work with cutting-edge retail & tech solutions that are shaping the future of the industry.</p>
+                </div>
+                
+                <div class="benefit-card animate-item delay-2">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Collaborative Culture</h3>
+                    <p class="benefit-description">Team up with passionate experts in a supportive environment that values every voice.</p>
+                </div>
+                
+                <div class="benefit-card animate-item delay-3">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Growth Opportunities</h3>
+                    <p class="benefit-description">Continuous learning, mentorship programs, and clear paths for career advancement.</p>
+                </div>
+                
+                <div class="benefit-card animate-item delay-4">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <h3 class="benefit-title">Flexibility</h3>
+                    <p class="benefit-description">Hybrid/remote-friendly roles with flexible schedules to support work-life balance.</p>
+                </div>
+                
+                <div class="benefit-card animate-item delay-1">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="benefit-title">Impactful Work</h3>
+                    <p class="benefit-description">Build products that touch millions of users and transform the retail experience.</p>
+                </div>
+                
+                <div class="benefit-card animate-item delay-2">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="benefit-title">Competitive Benefits</h3>
+                    <p class="benefit-description">Comprehensive benefits package including health insurance and performance bonuses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Current Openings Section -->
+    <section id="openings" class="openings-section">
+        <div class="openings-container">
+            <h2 class="section-title animate-item">Current Openings</h2>
+            
+            <div class="job-card animate-item delay-1">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Graphic Designer</h3>
+                        <p class="job-company">Camcall Retail Pvt Ltd</p>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Design</span>
+                        <span class="job-tag">Marketing</span>
+                        <span class="job-tag">Full-time</span>
+                    </div>
+                </div>
+                
+                <div class="job-details">
+                    <div class="job-responsibilities">
+                        <h4 class="job-subtitle"><i class="fas fa-tasks"></i> Responsibilities</h4>
+                        <ul class="job-list">
+                            <li>Create digital banners, posters, and product designs for Julebi</li>
+                            <li>Collaborate with marketing & product teams</li>
+                            <li>Work on UI/UX elements for retail campaigns</li>
+                            <li>Develop visual concepts that align with brand guidelines</li>
+                            <li>Prepare rough drafts and present ideas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-requirements">
+                        <h4 class="job-subtitle"><i class="fas fa-graduation-cap"></i> Requirements</h4>
+                        <ul class="job-list">
+                            <li>Strong portfolio in graphic design</li>
+                            <li>Skilled in Photoshop, Illustrator, Figma</li>
+                            <li>Creativity + ability to meet deadlines</li>
+                            <li>2+ years of professional experience</li>
+                            <li>Understanding of layout, typography, and color theory</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <a href="#apply" class="apply-button">Apply Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="job-card animate-item delay-2">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">App Developer</h3>
+                        <p class="job-company">Camcall Technologies</p>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Development</span>
+                        <span class="job-tag">Mobile</span>
+                        <span class="job-tag">Full-time</span>
+                    </div>
+                </div>
+                
+                <div class="job-details">
+                    <div class="job-responsibilities">
+                        <h4 class="job-subtitle"><i class="fas fa-tasks"></i> Responsibilities</h4>
+                        <ul class="job-list">
+                            <li>Build and maintain Android/iOS apps (Julebi, Oldsyllabus)</li>
+                            <li>Collaborate with backend teams for integrations</li>
+                            <li>Optimize apps for speed & scalability</li>
+                            <li>Implement new features and functionality</li>
+                            <li>Debug and fix technical issues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-requirements">
+                        <h4 class="job-subtitle"><i class="fas fa-graduation-cap"></i> Requirements</h4>
+                        <ul class="job-list">
+                            <li>Proficiency in Flutter / React Native or native (Java/Kotlin/Swift)</li>
+                            <li>Experience with REST APIs & Firebase</li>
+                            <li>Problem-solving & teamwork skills</li>
+                            <li>3+ years of mobile development experience</li>
+                            <li>Familiarity with Agile development methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <a href="#apply" class="apply-button">Apply Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Hire Section -->
+    <section class="process-section">
+        <div class="process-container">
+            <h2 class="section-title animate-item">How We Hire</h2>
+            
+            <div class="process-steps">
+                <div class="process-step animate-item delay-1">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Apply Online</h3>
+                        <p class="step-description">Submit your application through mail with your resume and portfolio.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step animate-item delay-2">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Shortlisting</h3>
+                        <p class="step-description">Our talent team reviews applications and contacts qualified candidates.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step animate-item delay-3">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Interview Rounds</h3>
+                        <p class="step-description">Technical and HR interviews to assess skills and cultural fit.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step animate-item delay-4">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Offer & Onboarding</h3>
+                        <p class="step-description">Successful candidates receive an offer and go through our onboarding process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Now Section -->
+    <section id="apply" class="apply-section">
+        <div class="apply-container">
+            <h2 class="section-title animate-item" style="color: white;">Apply Now</h2>
+            
+            <div class="apply-form animate-item delay-1">
+                <p style="margin-bottom: 2rem; text-align: center; opacity: 0.9;">Want to work with us? Send your CV today!</p>
+                
+              
+                  
+                    
+                    <div class="upload-options">
+                        <div class="upload-option">
+                            <div class="upload-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="upload-title">Email Directly</h3>
+                            <p class="upload-description">Send your resume directly to our hiring team</p>
+                            <a href="mailto:careers@camcall.com?subject=Job Application&body=Please find my resume attached." class="upload-button">Email Resume</a>
+                        
+                        
+                       
+        </div>
+    </section>
+
+    <!-- Employee Benefits Section -->
+    <section class="perks-section">
+        <div class="perks-container">
+            <h2 class="section-title animate-item">Employee Benefits</h2>
+            
+            <div class="perk-card animate-item delay-1">
+                <div class="perk-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3 class="perk-title">Competitive Salaries</h3>
+                <p class="perk-description">Industry-standard compensation with regular performance-based bonuses.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-2">
+                <div class="perk-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="perk-title">Health & Wellness</h3>
+                <p class="perk-description">Comprehensive health insurance and wellness programs for all employees.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-3">
+                <div class="perk-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="perk-title">Flexible Schedules</h3>
+                <p class="perk-description">Work-life balance with flexible hours and remote work options.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-4">
+                <div class="perk-icon">
+                    <i class="fas fa-umbrella-beach"></i>
+                </div>
+                <h3 class="perk-title">Paid Time Off</h3>
+                <p class="perk-description">Generous vacation policy, sick leaves, and paid holidays.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-1">
+                <div class="perk-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="perk-title">Learning & Development</h3>
+                <p class="perk-description">Budget for courses, conferences, and continuous skill development.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-2">
+                <div class="perk-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3 class="perk-title">Fitness Allowance</h3>
+                <p class="perk-description">Gym membership or fitness class reimbursement.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-3">
+                <div class="perk-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="perk-title">Meals & Snacks</h3>
+                <p class="perk-description">Complimentary meals, snacks, and beverages in the office.</p>
+            </div>
+            
+            <div class="perk-card animate-item delay-4">
+                <div class="perk-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="perk-title">Career Growth</h3>
+                <p class="perk-description">Clear advancement paths and mentorship programs for career development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA Section -->
+    <section class="footer-cta">
+        <div class="footer-cta-content">
+            <h2 class="footer-cta-title animate-item">Ready to shape the future with Camcall?</h2>
+            <p class="footer-cta-text animate-item delay-1">Join us and grow with innovation. Send your resume today and take the first step toward an exciting career.</p>
+            <a href="#apply" class="cta-button animate-item delay-2">Send Your Resume <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation observer
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.animate-item');
+                const windowHeight = window.innerHeight;
+                const triggerOffset = windowHeight * 0.15;
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    
+                    if (elementPosition < windowHeight - triggerOffset) {
+                        element.classList.add('visible');
+                    }
+                });
+                
+                // Back to top button
+                const backToTop = document.getElementById('backToTop');
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            };
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Auto-hide navbar variables
+            let lastScrollY = window.scrollY;
+            let scrollTimeout;
+            const navbar = document.getElementById('navbar');
+            let isNavbarHidden = false;
+            
+            // Auto-hide navbar function
+            function autoHideNavbar() {
+                // Hide navbar after 5 seconds of inactivity
+                scrollTimeout = setTimeout(() => {
+                    if (!isNavbarHidden) {
+                        navbar.classList.add('hidden');
+                        isNavbarHidden = true;
+                    }
+                }, 5000); // 5 seconds
+            }
+            
+            // Show navbar function
+            function showNavbar() {
+                if (isNavbarHidden) {
+                    navbar.classList.remove('hidden');
+                    isNavbarHidden = false;
+                }
+                // Restart the auto-hide timer
+                clearTimeout(scrollTimeout);
+                autoHideNavbar();
+            }
+            
+            // Start the auto-hide timer
+            autoHideNavbar();
+            
+            // Scroll listener
+            window.addEventListener('scroll', () => {
+                // Animation on scroll
+                animateOnScroll();
+                
+                // Show navbar on scroll
+                showNavbar();
+                
+                // Navbar hide/show on scroll direction
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    if (currentScrollY > lastScrollY) {
+                        // Scrolling down
+                        navbar.classList.add('hidden');
+                    } else {
+                        // Scrolling up
+                        navbar.classList.remove('hidden');
+                    }
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+            
+            // Mouse movement listener
+            document.addEventListener('mousemove', () => {
+                // Show navbar on mouse movement
+                showNavbar();
+            });
+            
+            // Click listener
+            document.addEventListener('click', () => {
+                // Show navbar on click
+                showNavbar();
+            });
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+                // Show navbar when opening mobile menu
+                showNavbar();
+            });
+            
+            // Close menu when clicking links
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // Show navbar when closing mobile menu
+                    showNavbar();
+                });
+            });
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const mobileThemeIcon = mobileThemeToggle.querySelector('i');
+            
+            const toggleTheme = () => {
+                document.body.classList.toggle('dark-theme');
+                
+                if (document.body.classList.contains('dark-theme')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    mobileThemeIcon.classList.remove('fa-moon');
+                    mobileThemeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    mobileThemeIcon.classList.remove('fa-sun');
+                    mobileThemeIcon.classList.add('fa-moon');
+                }
+            };
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu.classList.contains('active')) {
+                            menuToggle.classList.remove('active');
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                });
+            });
+            
+            // Back to top functionality
+            document.getElementById('backToTop').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // File upload input styling
+            const fileInputs = document.querySelectorAll('.file-upload-input');
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const fileName = this.files[0]?.name || 'Choose File';
+                    this.previousElementSibling.textContent = fileName;
+                });
+            });
+            
+            // Form submission
+            document.getElementById('careerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your application! We will review your submission and get back to you soon.');
+                this.reset();
+                document.querySelector('.file-upload-btn').textContent = 'Choose File (PDF/DOCX)';
+            });
+            
+            // Show upload form when "Upload Now" button is clicked
+            document.querySelector('a[href="#upload-form"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('careerForm').style.display = 'block';
+                this.parentElement.parentElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

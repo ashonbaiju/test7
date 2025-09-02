@@ -1,0 +1,1861 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Camcall | Retail Excellence & Technology Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ====== FONT UPDATE ====== */
+        /* Body font changed to Avenir-like (Nunito Sans) */
+        body {
+            font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        /* Reset hero section to Poppins */
+        .hero, .hero * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Section titles use Avenir-like font */
+        .section-title, .vision-title, .solutions-title, .careers-text h2, .content-box h3 {
+            font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 800;
+        }
+        
+        /* ====== COLOR VARIABLES ====== */
+        :root {
+            --primary: #0087e0;
+            --primary-dark: #0066a6;
+            --primary-light: #4da6ff;
+            --secondary: #0087e0;
+            --light: #ffffff;
+            --dark: #0a0a0a;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16);
+            --bg-color: #ffffff;
+            --text-color: #0a0a0a;
+            --card-bg: #f8f9fa;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #e0e0e0;
+            --nav-height: 70px;
+        }
+
+        .dark-theme {
+            --primary: #4da6ff;
+            --primary-dark: #1a75bc;
+            --secondary: #0087e0;
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --border-color: #333333;
+        }
+
+        /* ====== BASE STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.7;
+            transition: background-color 0.8s ease, color 0.8s ease;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Animation Styles */
+        .animate-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+            will-change: transform, opacity;
+        }
+
+        .animate-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        /* Navbar with auto-hide behavior - MOBILE IMPROVED */
+        .navbar {
+            width: 100%;
+            padding: 0.8rem 5%; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease, opacity 0.4s ease, background 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--nav-height);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .logo-container {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .logo {
+            height: 100%;
+            max-width: 150px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            background: var(--secondary);
+            left: 0;
+            bottom: 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .hamburger::before, .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger::after {
+            transform: translateY(8px);
+        }
+
+        .menu-toggle.active .hamburger {
+            background: transparent;
+        }
+
+        .menu-toggle.active .hamburger::before {
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.active .hamburger::after {
+            transform: rotate(-45deg);
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            margin-left: 1rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.2);
+        }
+
+        /* Mobile Menu - IMPROVED FOR MOBILE */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1.2rem 0;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: block;
+            position: relative;
+        }
+
+        .mobile-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .mobile-menu a:hover::after {
+            width: 80px;
+        }
+
+        .mobile-menu .theme-toggle {
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+
+        /* Modern Hero Section */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-top: var(--nav-height);
+            background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+            padding: 4rem 1.5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 135, 224, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 20%, rgba(77, 166, 255, 0.1) 0%, transparent 30%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: clamp(1.5rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #ffffff, #4da6ff, #0087e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1.5px;
+            animation: gradientShift 8s ease infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1rem);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 0 0.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        /* Section Common Styles - MOBILE IMPROVED */
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            color: var(--primary);
+            letter-spacing: -1px;
+            padding: 0 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--secondary);
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Content Styles */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            margin-bottom: 5rem;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary);
+            transition: width 0.4s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-card:hover::before {
+            width: 8px;
+        }
+
+        .about-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .about-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .about-card ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .about-card ul li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .divisions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .division-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .division-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .division-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .division-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .division-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .division-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .division-description {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 4rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 1.5rem 2rem;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            top: 2rem;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-year {
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-text {
+            line-height: 1.6;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 5rem 1.5rem;
+            border-radius: 30px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .values-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 135, 224, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 20%, rgba(77, 166, 255, 0.1) 0%, transparent 30%);
+            z-index: 1;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .value-card:hover .value-icon {
+            transform: rotateY(360deg);
+            background: var(--secondary);
+            color: white;
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .value-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Leadership Team Styles */
+        .team-section {
+            padding: 5rem 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .team-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .team-card:hover .team-image::after {
+            transform: translateX(100%);
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .team-role {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-bio {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Contact Section - Updated with index.html styles */
+        .contact-section {
+            background: #000;
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+            color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .contact-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .contact-left {
+            padding: 0;
+        }
+
+        .contact-center {
+            padding: 0;
+        }
+
+        .contact-right {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info-item  {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            min-width: 30px;
+        }
+
+        .contact-info-text {
+            flex: 1;
+        }
+
+        .contact-info-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .contact-info-text p {
+            color: #ddd;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: var(--secondary);
+            color: white !important;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Updated Social Icons Section */
+        .social-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .social-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.1rem;
+            transform: translateZ(0);
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px) rotateY(360deg) scale(1.1);
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* Updated App Downloads Section */
+        .app-downloads {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .app-downloads h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .app-download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* New Google Play Button Style */
+        .playstore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
+        }
+
+        /* Circle app logo */
+        .app-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .app-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Google Play SVG */
+        .playstore-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .playstore-btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .playstore-btn:hover svg {
+            fill: #000;
+        }
+
+        .legal-info-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .legal-info-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legal-info-box h3 i {
+            font-size: 1.4rem;
+        }
+
+        .legal-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .legal-detail {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .legal-detail .label {
+            font-weight: 600;
+            min-width: 80px;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .legal-detail .value {
+            color: #aaa;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        /* Legal Information - MOBILE OPTIMIZED */
+        .legal-info {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+        }
+
+        .legal-info div {
+            white-space: nowrap;
+        }
+
+        .copyright {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            color: #aaa;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .copyright {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .copyright-left {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .copyright-left {
+                text-align: left;
+            }
+        }
+
+        .copyright-right {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .copyright-right {
+                text-align: right;
+            }
+        }
+
+        /* Back to top button - MOBILE OPTIMIZED */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design - MOBILE FIRST */
+        @media (max-width: 991px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 767px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero {
+                min-height: 80vh;
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: -0.5px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+            
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .about-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .about-card h2 {
+                font-size: 1.8rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .divisions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                margin-bottom: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .about-card {
+                padding: 1.8rem 1.2rem;
+            }
+            
+            .team-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .legal-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.85rem;
+                padding: 1.2rem;
+            }
+            
+            .legal-info div {
+                white-space: normal;
+                text-align: center;
+            }
+            
+            .copyright {
+                padding: 1.2rem;
+                font-size: 0.85rem;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar" id="navbar">
+        <a href="index.html" class="logo-container animate-item delay-1">
+            <img src="cam.png" alt="Camcall" class="logo">
+        </a>
+        
+        <nav class="nav-links">
+            <a href="index.html" class="animate-item delay-1"><i class="fas fa-home"></i> </a>
+            <a href="#who-we-are" class="animate-item delay-1"><i class="fas fa-users"></i> </a>
+            <a href="#vision-mission" class="animate-item delay-1"><i class="fas fa-eye"></i> </a>
+            <a href="#our-story" class="animate-item delay-1"><i class="fas fa-history"></i> </a>
+            <a href="#leadership" class="animate-item delay-1"><i class="fas fa-crown"></i></a>
+            <a href="#contact" class="animate-item delay-1"><i class="fas fa-envelope"></i> </a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <div class="hamburger"></div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="#who-we-are"><i class="fas fa-users"></i> Who We Are</a>
+            <a href="#vision-mission"><i class="fas fa-eye"></i> Vision & Mission</a>
+            <a href="#our-story"><i class="fas fa-history"></i> Our Story</a>
+            <a href="#leadership"><i class="fas fa-crown"></i> Leadership</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <button class="theme-toggle" id="mobileThemeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title animate-item delay-1">Redefining Business Through Innovation</h1>
+            <p class="hero-subtitle animate-item delay-2">At Camcall, we're building a future where retail excellence, technological innovation, and quality FMCG products come together to create exceptional value for our customers.</p>
+            
+            <div class="hero-stats animate-item delay-3">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">8690+</div>
+                    <div class="hero-stat-label">Clients Served</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">3+</div>
+                    <div class="hero-stat-label">Business Divisions</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">60+</div>
+                    <div class="hero-stat-label">Team Members</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">8+</div>
+                    <div class="hero-stat-label">Countries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Who We Are Section -->
+    <section id="who-we-are" class="about-section">
+        <div class="about-container">
+            <h2 class="section-title animate-item">Who We Are</h2>
+            
+            <div class="about-card animate-item delay-1">
+                <h2>Our Company</h2>
+                <p>Camcall is a forward-thinking Indian brand that unites retail excellence, technological innovation, and FMCG distribution under one umbrella. With a strong foundation across multiple business domains, we aim to make everyday life simpler, smarter, and more connected.</p>
+                <p>We operate through three dynamic divisions:</p>
+                
+                <div class="divisions-grid">
+                    <div class="division-card">
+                        <div class="division-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="division-title">Camcall Retail</h3>
+                        <p class="division-description">Our retail division focuses on consumer products, sold through our Julebi app & website as well as leading e-commerce platforms.</p>
+                    </div>
+                    
+                    <div class="division-card">
+                        <div class="division-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="division-title">Camcall Technologies</h3>
+                        <p class="division-description">Our technology division specializes in app development and manages digital platforms like the OldSyllabus service platform.</p>
+                    </div>
+                    
+                    <div class="division-card">
+                        <div class="division-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h3 class="division-title">Camcall FMCG</h3>
+                        <p class="division-description">Our FMCG division delivers quality fast-moving consumer goods that meet everyday needs with reliability and value.</p>
+                    </div>
+                </div>
+                
+                <p>In the past, Camcall Technologies also explored CCTV camera and LOT manufacturing as part of its innovation journey, experiences that helped shape our current approach to technology solutions.</p>
+            </div>
+            
+            <div class="about-card animate-item delay-2">
+                <h2>Our Team</h2>
+                <p>Behind Camcall is a passionate team of entrepreneurs, developers, retail experts, and innovators dedicated to solving real-world problems with creativity and determination. Our team combines:</p>
+                <ul>
+                    <li><strong>Retail Experts:</strong> Driving product sourcing, branding, and consumer sales through digital platforms.</li>
+                    <li><strong>Tech Innovators:</strong> Building mobile & web applications and managing service-based platforms.</li>
+                    <li><strong>FMCG Specialists:</strong> Ensuring quality distribution of fast-moving consumer goods across markets.</li>
+                </ul>
+                <p>Together, we combine business expertise with technological vision to deliver impactful solutions that serve both today's needs and tomorrow's possibilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section id="vision-mission" class="about-section">
+        <div class="about-container">
+            <h2 class="section-title animate-item">Our Vision & Mission</h2>
+            
+            <div class="values-section animate-item delay-1">
+                <div class="values-grid">
+                    <div class="value-card animate-item delay-1">
+                        <div class="value-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="value-title">Our Vision</h3>
+                        <p class="value-description">To become a trusted multi-division brand in retail, technology, and FMCG, empowering customers with quality products and innovative digital services that improve everyday living.</p>
+                    </div>
+                    
+                    <div class="value-card animate-item delay-2">
+                        <div class="value-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="value-title">Our Mission</h3>
+                        <p class="value-description">To expand our retail presence through platforms like Julebi, innovate in technology with solutions like OldSyllabus, and distribute quality FMCG products that serve modern households.</p>
+                    </div>
+                    
+                    <div class="value-card animate-item delay-3">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="value-title">Our Values</h3>
+                        <p class="value-description">Innovation, Integrity, Customer Focus, Adaptability, and Sustainability guide every decision we make and every solution we create across all our divisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="team-section">
+        <div class="about-container">
+            <h2 class="section-title animate-item">Our Leadership</h2>
+            
+            <div class="team-grid">
+                <div class="team-card animate-item delay-1">
+                    <div class="team-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="team-name"> Mejo Mathew</h3>
+                    <p class="team-role">Director & Co-Founder</p>
+                    <p class="team-bio">With over 23 years of experience in business development and retail operations, Mejo Mathew provides strategic direction for Camcall's retail division and oversees our expansion into new markets.</p>
+                </div>
+                
+                <div class="team-card animate-item delay-2">
+                    <div class="team-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="team-name">Our Team</h3>
+                    <p class="team-role">Innovators & Experts</p>
+                    <p class="team-bio">Our dedicated team of retail specialists, developers, FMCG experts, designers, and support staff work collaboratively to bring the Camcall vision to life through innovative products and exceptional customer experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="our-story" class="about-section">
+        <div class="about-container">
+            <h2 class="section-title animate-item">Our Journey</h2>
+            
+            <div class="about-card animate-item delay-1">
+                <h2>From Vision to Reality</h2>
+                <p>Camcall began with a simple yet powerful idea: bridging the gap between retail, technology, and FMCG under one cohesive brand. We recognized that the future of business would depend on seamlessly integrating physical products with digital experiences.</p>
+                <p>Founded in 2016, we established Camcall Retail Private Limited, entering the retail space with carefully selected consumer products that meet the needs of modern Indian households. Our approach was different from the start - we focused on quality, affordability, and accessibility through digital channels.</p>
+                <p>As we grew, we expanded into technology with Camcall Technologies and later established our FMCG division to serve the everyday needs of consumers with quality products.</p>
+            </div>
+            
+            <div class="timeline animate-item delay-2">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016</div>
+                        <div class="timeline-text">Founded Camcall Retail Private Limited and launched our retail operations with carefully selected consumer products.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-text">Expanded into technology with Camcall Technologies, focusing on app development and digital platform creation.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-text">Launched Julebi, our proprietary e-commerce platform for product sales, and began distributing through Amazon to reach wider audiences.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-text">Established our FMCG division to distribute quality fast-moving consumer goods across markets.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-text">Introduced OldSyllabus, an innovative on-demand service platform connecting students and professionals with educational resources.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <div class="timeline-text">Celebrated rapid growth with thousands of customers served across all divisions and plans for international expansion.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-card animate-item delay-3">
+                <h2>Looking to the Future</h2>
+                <p>At Camcall, the journey has only just begun. We're continuously expanding our retail product lines, ensuring Julebi becomes a household name for online shopping across India. Our technology division is strengthening its offerings with a focus on scalable apps and digital platforms that serve evolving market needs.</p>
+                <p>Our FMCG division is growing its distribution network to bring quality products to more consumers across the country. We aim to make OldSyllabus a leader in the on-demand service industry, reaching students and professionals nationwide with innovative educational solutions.</p>
+                <p>The future of Camcall is about growth, innovation, and impact—building a company that serves both today's needs and tomorrow's possibilities while maintaining our commitment to making everyday life simpler, smarter, and more connected for all our customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Updated with index.html contact section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-left">
+                <div class="contact-info">
+                    <!-- Contact Information -->
+                    <div class="contact-info-item animate-item delay-1">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-info-text">
+                            <h4>Telephone</h4>
+                            <p>+91 4936 237 236</p>
+                            <a href="tel:+914936237236" class="contact-button animate-item delay-2">
+                                <i class="fas fa-phone-alt"></i> Call Now
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item animate-item delay-2">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-info-text">
+                            <h4>Email</h4>
+                            <p>hello@camcall.in</p>
+                            <a href="mailto:hello@camcall.in" class="contact-button animate-item delay-2"><i class="fas fa-envelope"></i> Email Us</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item animate-item delay-3">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-info-text">
+                            <h4>Address</h4>
+                            <p>Camcall Retail Pvt Ltd</p>
+                            <p>KGP XII-483V
+                              Wayanad
+                              Kerala PIN:673122</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-center">
+                <!-- Legal Information -->
+                <div class="legal-info-box">
+                    <h3 class="animate-item delay-1"><i class="fas fa-balance-scale"></i> Legal</h3>
+                    <div class="legal-details">
+                        <div class="legal-detail animate-item delay-2">
+                            <span class="label">CIN:</span>
+                            <span class="value">U47912KL2023PTC085083</span>
+                        </div>
+                        <div class="legal-detail animate-item delay-2">
+                            <span class="label">GSTIN:</span>
+                            <span class="value">32AALCC5086A1ZY</span>
+                        </div>
+                        <div class="legal-detail animate-item delay-2">
+                            <span class="label">K-Swift:</span>
+                            <span class="value">KLMSME 12883/2023</span>
+                        </div>
+                        <div class="legal-detail animate-item delay-2">
+                            <span class="label">UDYAM:</span>
+                            <span class="value">UDYAM-KL-14-0000891</span>
+                        </div>
+                        <div class="legal-detail animate-item delay-2">
+                            <span class="label">MSME:</span>
+                            <span class="value">KL14A0000022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <!-- Follow Us with App Downloads -->
+                <div class="social-section">
+                    <h3 class="animate-item delay-1">Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/camcalltechnologies" class="animate-item delay-1" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="animate-item delay-2" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="animate-item delay-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="animate-item delay-4" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    
+                    <div class="app-downloads">
+                        <h3 class="animate-item delay-2">Download Our Apps</h3>
+                        <div class="app-download-buttons">
+                            <!-- Julebi App Button -->
+                            <a href="https://play.google.com/store/apps/details?id=com.shops.julebi&pcampaignid=web_share" 
+                               target="_blank" class="playstore-btn animate-item delay-3">
+                                <div class="app-logo">
+                                    <img src="fotor-202409101596.png" alt="Julebi Logo">
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 336.7 1200 1225.3">
+                                    <path d="M152.6 336.7c-13.9 0-27.5 3.4-40 10.2L772.6 843 919.3 697.5 165.7 342.8c-4.2-2-8.6-3.5-13.1-4.4zM78.3 393.3c-2.1 6.3-3.3 12.9-3.3 19.5v1073.8c0 6.6 1.1 13.2 3.3 19.5l642.4-553.8L78.3 393.3zm1097.8 303.7L956.2 816.9l-164.5 164.5 164.5 164.5 220-220c9-9 13.5-20.7 13.5-32.6s-4.5-23.6-13.5-32.6l-90.6-90.7zm-278.7 278.7L166 1478.7c12.5 6.8 26.1 10.2 40 10.2 4.5-.9 8.9-2.4 13.1-4.4l753.6-354.6-75.3-75.3z"/>
+                                </svg>
+                                Google Play
+                            </a>
+                            
+                            <!-- Oldsyllabus App Button -->
+                            <a href="https://play.google.com/store/apps/details?id=com.oldsyllabus.vr" 
+                               target="_blank" class="playstore-btn animate-item delay-4">
+                                <div class="app-logo">
+                                    <img src="oldwhite.png" alt="Oldsyllabus Logo">
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="30 336.7 1200 1225.3">
+                                    <path d="M152.6 336.7c-13.9 0-27.5 3.4-40 10.2L772.6 843 919.3 697.5 165.7 342.8c-4.2-2-8.6-3.5-13.1-4.4zM78.3 393.3c-2.1 6.3-3.3 12.9-3.3 19.5v1073.8c0 6.6 1.1 13.2 3.3 19.5l642.4-553.8L78.3 393.3zm1097.8 303.7L956.2 816.9l-164.5 164.5 164.5 164.5 220-220c9-9 13.5-20.7 13.5-32.6s-4.5-23.6-13.5-32.6l-90.6-90.7zm-278.7 278.7L166 1478.7c12.5 6.8 26.1 10.2 40 10.2 4.5-.9 8.9-2.4 13.1-4.4l753.6-354.6-75.3-75.3z"/>
+                                </svg>
+                                Google Play
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="copyright">
+            <div class="copyright-left">
+                © 2016–2025 Camcall Retail Pvt Ltd. (Formally known as "Camcall Technologies"). All rights reserved.
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation observer
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.animate-item');
+                const windowHeight = window.innerHeight;
+                const triggerOffset = windowHeight * 0.15;
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    
+                    if (elementPosition < windowHeight - triggerOffset) {
+                        element.classList.add('visible');
+                    }
+                });
+                
+                // Back to top button
+                const backToTop = document.getElementById('backToTop');
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            };
+            
+            // Initial check
+            animateOnScroll();
+            
+            // Auto-hide navbar variables
+            let lastScrollY = window.scrollY;
+            let scrollTimeout;
+            const navbar = document.getElementById('navbar');
+            let isNavbarHidden = false;
+            
+            // Auto-hide navbar function
+            function autoHideNavbar() {
+                // Hide navbar after 5 seconds of inactivity
+                scrollTimeout = setTimeout(() => {
+                    if (!isNavbarHidden) {
+                        navbar.classList.add('hidden');
+                        isNavbarHidden = true;
+                    }
+                }, 5000); // 5 seconds
+            }
+            
+            // Show navbar function
+            function showNavbar() {
+                if (isNavbarHidden) {
+                    navbar.classList.remove('hidden');
+                    isNavbarHidden = false;
+                }
+                // Restart the auto-hide timer
+                clearTimeout(scrollTimeout);
+                autoHideNavbar();
+            }
+            
+            // Start the auto-hide timer
+            autoHideNavbar();
+            
+            // Scroll listener
+            window.addEventListener('scroll', () => {
+                // Animation on scroll
+                animateOnScroll();
+                
+                // Show navbar on scroll
+                showNavbar();
+                
+                // Navbar hide/show on scroll direction
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    if (currentScrollY > lastScrollY) {
+                        // Scrolling down
+                        navbar.classList.add('hidden');
+                    } else {
+                        // Scrolling up
+                        navbar.classList.remove('hidden');
+                    }
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+            
+            // Mouse movement listener
+            document.addEventListener('mousemove', () => {
+                // Show navbar on mouse movement
+                showNavbar();
+            });
+            
+            // Click listener
+            document.addEventListener('click', () => {
+                // Show navbar on click
+                showNavbar();
+            });
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+                // Show navbar when opening mobile menu
+                showNavbar();
+            });
+            
+            // Close menu when clicking links
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // Show navbar when closing mobile menu
+                    showNavbar();
+                });
+            });
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const mobileThemeIcon = mobileThemeToggle.querySelector('i');
+            
+            const toggleTheme = () => {
+                document.body.classList.toggle('dark-theme');
+                
+                if (document.body.classList.contains('dark-theme')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    mobileThemeIcon.classList.remove('fa-moon');
+                    mobileThemeIcon.classList.add('fa-sun');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    mobileThemeIcon.classList.remove('fa-sun');
+                    mobileThemeIcon.classList.add('fa-moon');
+                }
+            };
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu.classList.contains('active')) {
+                            menuToggle.classList.remove('active');
+                            mobileMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                });
+            });
+            
+            // Back to top functionality
+            document.getElementById('backToTop').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
